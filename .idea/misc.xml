@@ -5,11 +5,13 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_visibility_24.xml" value="0.31302083333333336" />
         <entry key="app/src/main/res/drawable/ic_git_fork_icon.xml" value="0.31302083333333336" />
+        <entry key="app/src/main/res/drawable/ic_outline_filter_alt_24.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/drawable/ic_outline_info_24.xml" value="0.31302083333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.296875" />
         <entry key="app/src/main/res/layout/repository_item.xml" value="0.55" />
         <entry key="app/src/main/res/layout/search_screen_fragment.xml" value="0.503125" />
         <entry key="app/src/main/res/layout/user_item.xml" value="0.503125" />
+        <entry key="app/src/main/res/menu/filter_menu.xml" value="0.503125" />
       </map>
     </option>
   </component>

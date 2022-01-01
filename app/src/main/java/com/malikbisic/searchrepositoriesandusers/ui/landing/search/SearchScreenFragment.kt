@@ -2,9 +2,15 @@ package com.malikbisic.searchrepositoriesandusers.ui.landing.search
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -12,6 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.malikbisic.searchrepositoriesandusers.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.search_screen_fragment.*
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 @AndroidEntryPoint
 class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
@@ -21,10 +30,15 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
     private lateinit var mAdapterUsers: UserAdapter
     private val searchScreenViewModel by viewModels<SearchScreenViewModel>()
 
+    private lateinit var builder: AlertDialog.Builder
+
     var isUserSelected: Boolean = false
+    var text: String = ""
+    var selectedStrings: ArrayList<String> = arrayListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
 
         mAdapterRepositories = RepositoryAdapter()
         mAdapterUsers = UserAdapter()
@@ -49,6 +63,8 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
 
         repositories_btn.setOnClickListener(this)
         users_btn.setOnClickListener(this)
+
+        createAlertDialog()
     }
 
     override fun onQueryTextSubmit(text: String?): Boolean {
@@ -57,17 +73,18 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
 
     override fun onQueryTextChange(text: String?): Boolean {
         if (text != null) {
+            this.text = text
             if (isUserSelected)
-                searchScreenViewModel.searchAuthors(text)
+                searchScreenViewModel.searchAuthors(text, selectedStrings)
             else
-                searchScreenViewModel.searchRepositories(text)
+                searchScreenViewModel.searchRepositories(text, selectedStrings)
             return true
         }
 
         if (isUserSelected)
-            searchScreenViewModel.searchAuthors("")
+            searchScreenViewModel.searchAuthors("", selectedStrings)
         else
-            searchScreenViewModel.searchRepositories("")
+            searchScreenViewModel.searchRepositories("", selectedStrings)
 
         return true
     }
@@ -99,5 +116,55 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
                 search_view.setQuery("", true)
             }
         }
+    }
+
+    fun createAlertDialog() {
+        val items = arrayOf("Stars", "Forks", "Updated")
+        var checkedItems = booleanArrayOf(false, false, false)
+        val selectedList = ArrayList<Int>()
+        builder = AlertDialog.Builder(requireContext())
+
+        builder.setTitle("This is list choice dialog box")
+        builder.setMultiChoiceItems(items, checkedItems) { dialog, which, isChecked ->
+            if (isChecked) {
+                selectedList.add(which)
+                checkedItems[Integer.valueOf(which)] = true
+            } else if (selectedList.contains(which)) {
+                selectedList.remove(Integer.valueOf(which))
+                checkedItems[Integer.valueOf(which)] = true
+            }
+        }
+
+        builder.setPositiveButton("DONE") { dialogInterface, i ->
+            selectedStrings = ArrayList<String>()
+            checkedItems = booleanArrayOf(false, false, false)
+
+            for (j in selectedList.indices) {
+                var item = items[selectedList[j]]
+                selectedStrings.add(item.lowercase())
+                checkedItems[j] = true
+            }
+
+            if (isUserSelected)
+                searchScreenViewModel.searchAuthors(text, selectedStrings)
+            else
+                searchScreenViewModel.searchRepositories(text, selectedStrings)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.filter_menu, menu)
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.filter -> {
+                builder.show()
+            }
+        }
+
+        return true
     }
 }

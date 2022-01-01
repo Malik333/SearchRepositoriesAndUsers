@@ -26,7 +26,7 @@ class SearchScreenViewModel @Inject constructor(
         get() = _gitHubAuthors
 
 
-    fun searchRepositories(text: String) {
+    fun searchRepositories(text: String, filters: ArrayList<String>) {
 
         if (text.isEmpty()) {
             _gitHubRepositories.value = listOf()
@@ -35,6 +35,12 @@ class SearchScreenViewModel @Inject constructor(
         val params: HashMap<String, String> = HashMap<String, String>()
         params["q"] = text
 
+        if (!filters.isNullOrEmpty()) {
+            val sortItems = filters.joinToString(".")
+            params["sort"] = sortItems
+        }
+
+
         repositoryRepo.getGitHubRepositories(params)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -42,7 +48,7 @@ class SearchScreenViewModel @Inject constructor(
                 { error -> Log.e("SearchScreenObser", error.localizedMessage) })
     }
 
-    fun searchAuthors(text: String) {
+    fun searchAuthors(text: String, filters: ArrayList<String>) {
 
         if (text.isEmpty()) {
             _gitHubAuthors.value = listOf()
@@ -50,6 +56,11 @@ class SearchScreenViewModel @Inject constructor(
 
         val params: HashMap<String, String> = HashMap<String, String>()
         params["q"] = text
+
+        if (!filters.isNullOrEmpty()) {
+            val sortItems = filters.joinToString(".").lowercase()
+            params["sort"] = sortItems
+        }
 
         repositoryRepo.getGitHubAuthors(params)
             .observeOn(AndroidSchedulers.mainThread())
