@@ -13,6 +13,7 @@ data class Repositories(
 )
 
 data class Repository(
+    val id: Int?,
     @Json(name = "name")
     val repositoryName: String?,
     @Json(name = "watchers_count")
@@ -25,9 +26,3 @@ data class Repository(
     val author: Author
 )
 
-data class Author(
-    @Json(name = "login")
-    val authorName: String?,
-    @Json(name = "avatar_url")
-    val avatarUrl: String?,
-)

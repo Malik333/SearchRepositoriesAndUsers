@@ -23,6 +23,7 @@
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        app:iconifiedByDefault="false"
         android:layout_below="@id/toolbar"/>
 
     <LinearLayout
@@ -33,12 +34,15 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/repositories_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:background="@color/green_200"
+            android:backgroundTint="@color/black"
+
             android:text="Repositories"/>
         <Button
+            android:id="@+id/users_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
