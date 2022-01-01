@@ -5,24 +5,50 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.malikbisic.searchrepositoriesandusers.R
+import com.malikbisic.searchrepositoriesandusers.glide.GlideApp
+import com.malikbisic.searchrepositoriesandusers.model.Repository
+import kotlinx.android.synthetic.main.repository_item.view.*
 
 class RepositoryAdapter: RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {
 
+    private var repositories: List<Repository> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
-        TODO("Not yet implemented")
+        return RepositoryViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = repositories[position]
+        holder.bind(item)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+       return repositories.size
+    }
+
+    fun setRepositoryItems(repositories: List<Repository>) {
+        this.repositories = repositories
+        notifyDataSetChanged()
     }
 
 
     class RepositoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+        fun bind(item: Repository) {
+            itemView.apply {
+                GlideApp.with(user_avatar)
+                    .load(item.author.avatarUrl)
+                    .into(user_avatar)
+
+                user_name.text = item.author.authorName
+                repo_name.text = item.repositoryName
+                watchers_count.text = item.watchersCount.toString()
+                forks_count.text = item.forksCount.toString()
+                issues_count.text = item.issuesCount.toString()
+
+            }
+        }
+
         companion object {
             fun from(parent: ViewGroup): RepositoryViewHolder {
                 val inflater = LayoutInflater.from(parent.context)

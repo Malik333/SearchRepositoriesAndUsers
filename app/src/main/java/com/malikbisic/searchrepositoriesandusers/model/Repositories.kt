@@ -19,6 +19,8 @@ data class Repository(
     val watchersCount: Int?,
     @Json(name = "forks_count")
     val forksCount: Int?,
+    @Json(name = "open_issues_count")
+    val issuesCount: Int?,
     @Json(name = "owner")
     val author: Author
 )

@@ -1,5 +1,6 @@
 package com.malikbisic.searchrepositoriesandusers.ui.landing.search
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,8 +16,8 @@ class SearchScreenViewModel @Inject constructor(
     private val repositoryRepo: RepositoryRepo
 ) :  ViewModel() {
 
-    private val _gitHubRepositories = MutableLiveData<Repository>()
-    val gitHubRepositories: LiveData<Repository>
+    private val _gitHubRepositories = MutableLiveData<List<Repository>>()
+    val gitHubRepositories: LiveData<List<Repository>>
             get()= _gitHubRepositories
    init {
       val params: HashMap<String, String> = HashMap<String, String>()
@@ -24,7 +25,7 @@ class SearchScreenViewModel @Inject constructor(
 
        repositoryRepo.getGitHubRepositories(params)
            .observeOn(AndroidSchedulers.mainThread())
-           .subscribe()
+           .subscribe({repositories -> _gitHubRepositories.value = repositories.items}, { error-> Log.e("SearchScreenObser", error.localizedMessage)})
 
    }
 }
