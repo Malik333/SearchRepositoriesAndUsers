@@ -7,6 +7,6 @@ import retrofit2.http.QueryMap
 
 interface GitHubService {
 
-    @GET(value = "repositories")
+    @GET(value = "search/repositories")
     fun getRepositories(@QueryMap params: Map<String, String>): Single<Repositories>
 }

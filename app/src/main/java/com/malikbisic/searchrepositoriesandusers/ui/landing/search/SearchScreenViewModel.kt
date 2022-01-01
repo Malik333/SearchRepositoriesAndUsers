@@ -1,4 +1,4 @@
-package com.malikbisic.searchrepositoriesandusers.ui.landing
+package com.malikbisic.searchrepositoriesandusers.ui.landing.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

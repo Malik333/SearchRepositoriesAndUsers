@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.malikbisic.searchrepositoriesandusers.ui.landing.SearchScreenFragment"
+        android:name="com.malikbisic.searchrepositoriesandusers.ui.landing.search.SearchScreenFragment"
         android:label="@string/label_blank"
         tools:layout="@layout/search_screen_fragment" />
 

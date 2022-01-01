@@ -1,16 +1,15 @@
-package com.malikbisic.searchrepositoriesandusers.ui.landing
+package com.malikbisic.searchrepositoriesandusers.ui.landing.search
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.malikbisic.searchrepositoriesandusers.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchScreenFragment : Fragment(R.layout.search_screen_fragment) {
 
     private val searchScreenViewModel by viewModels<SearchScreenViewModel>()
