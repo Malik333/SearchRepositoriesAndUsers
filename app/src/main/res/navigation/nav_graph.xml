@@ -9,6 +9,23 @@
         android:id="@+id/searchFragment"
         android:name="com.malikbisic.searchrepositoriesandusers.ui.landing.search.SearchScreenFragment"
         android:label="@string/label_blank"
-        tools:layout="@layout/search_screen_fragment" />
+        tools:layout="@layout/search_screen_fragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_repositoryDetailsFragment"
+            app:destination="@id/repositoryDetailsFragment"
+            app:popUpTo="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoryDetailsFragment"
+        android:name="com.malikbisic.searchrepositoriesandusers.ui.landing.repository.RepositoryDetailsFragment"
+        android:label="Repository Details"
+        tools:layout="@layout/repository_details_fragment" >
+        <argument
+            android:name="owner"
+            app:argType="string" />
+        <argument
+            android:name="repoName"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

@@ -3,6 +3,7 @@ package com.malikbisic.searchrepositoriesandusers.ui.landing.search
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.malikbisic.searchrepositoriesandusers.R
 import com.malikbisic.searchrepositoriesandusers.glide.GlideApp
@@ -35,12 +36,19 @@ class RepositoryAdapter: RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHo
     class RepositoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Repository) {
+
+            itemView.setOnClickListener {
+                val directions =
+                    SearchScreenFragmentDirections.actionSearchFragmentToRepositoryDetailsFragment(item.author?.authorName!!, item.repositoryName!!)
+                it.findNavController().navigate(directions)
+            }
+
             itemView.apply {
                 GlideApp.with(user_avatar)
-                    .load(item.author.avatarUrl)
+                    .load(item.author?.avatarUrl)
                     .into(user_avatar)
 
-                user_name.text = item.author.authorName
+                user_name.text = item.author?.authorName
                 repo_name.text = item.repositoryName
                 watchers_count.text = item.watchersCount.toString()
                 forks_count.text = item.forksCount.toString()

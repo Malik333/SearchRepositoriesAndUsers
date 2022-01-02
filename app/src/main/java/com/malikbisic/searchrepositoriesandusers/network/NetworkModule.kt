@@ -31,6 +31,7 @@ object NetworkModule {
     fun provideCallFactory(httpLoggingInterceptor: HttpLoggingInterceptor): Call.Factory {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
+            .followRedirects(false)
             .build()
     }
 

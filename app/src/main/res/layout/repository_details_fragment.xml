@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.landing.repository.RepositoryDetailsFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/repoDetailsUserAvatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_outline_info_24"/>
+
+        <TextView
+            android:id="@+id/repoDetailsUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User name"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/repoDetailsRepoNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repository:"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:src="@drawable/ic_outline_info_24"/>
+
+        <TextView
+            android:id="@+id/repoDetailsRepoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User name"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/repoDetailsRepoLanguageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Language:"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:src="@drawable/ic_outline_info_24"/>
+
+        <TextView
+            android:id="@+id/repoDetailsRepoLanguange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kotlin"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/repoDetailsRepoCreatedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Created:"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:src="@drawable/ic_outline_info_24"/>
+
+        <TextView
+            android:id="@+id/repoDetailsRepoCreated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dd/mm/yyyy"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/repoDetailsRepoUpdatedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Updated:"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:src="@drawable/ic_outline_info_24"/>
+
+        <TextView
+            android:id="@+id/repoDetailsRepoUpdated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dd/mm/yyyy"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/seeMoreTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="See more"
+        android:padding="10dp"
+        android:textColor="#05c5cf"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

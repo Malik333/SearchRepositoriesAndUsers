@@ -23,6 +23,14 @@ data class Repository(
     @Json(name = "open_issues_count")
     val issuesCount: Int?,
     @Json(name = "owner")
-    val author: Author
+    val author: Author?,
+    @Json(name = "created_at")
+    val created: String?,
+    @Json(name = "updated_at")
+    val updated: String?,
+    @Json(name = "language")
+    val language: String?,
+    @Json(name = "html_url")
+    val repoUrl: String?
 )
 

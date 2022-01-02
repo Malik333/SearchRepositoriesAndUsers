@@ -2,6 +2,7 @@ package com.malikbisic.searchrepositoriesandusers.repository
 
 import com.malikbisic.searchrepositoriesandusers.model.Author
 import com.malikbisic.searchrepositoriesandusers.model.Repositories
+import com.malikbisic.searchrepositoriesandusers.model.Repository
 import com.malikbisic.searchrepositoriesandusers.model.Users
 import com.malikbisic.searchrepositoriesandusers.network.GitHubService
 import io.reactivex.rxjava3.core.Single
@@ -20,6 +21,11 @@ class RepositoryRepo @Inject constructor(
 
     fun getGitHubAuthors(params: Map<String, String>): Single<Users> {
         return gitHubService.getUsers(params)
+            .subscribeOn(Schedulers.io())
+    }
+
+    fun getGitHubRepository(owner: String, repoName: String): Single<Repository> {
+        return gitHubService.getRepository(owner, repoName)
             .subscribeOn(Schedulers.io())
     }
 }
