@@ -2,6 +2,8 @@ package com.malikbisic.searchrepositoriesandusers.ui.landing.search
 
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
@@ -35,6 +37,8 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
     var isUserSelected: Boolean = false
     var text: String = ""
     var selectedStrings: ArrayList<String> = arrayListOf()
+
+    private val handler: Handler = Handler(Looper.getMainLooper())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,20 +76,21 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
     }
 
     override fun onQueryTextChange(text: String?): Boolean {
-        if (text != null) {
-            this.text = text
-            if (isUserSelected)
-                searchScreenViewModel.searchAuthors(text, selectedStrings)
-            else
-                searchScreenViewModel.searchRepositories(text, selectedStrings)
-            return true
-        }
-
-        if (isUserSelected)
-            searchScreenViewModel.searchAuthors("", selectedStrings)
-        else
-            searchScreenViewModel.searchRepositories("", selectedStrings)
-
+        handler.removeCallbacksAndMessages(null)
+        handler.postDelayed({
+            if (text != null) {
+                this.text = text
+                if (isUserSelected)
+                    searchScreenViewModel.searchAuthors(text, selectedStrings)
+                else
+                    searchScreenViewModel.searchRepositories(text, selectedStrings)
+            } else {
+                if (isUserSelected)
+                    searchScreenViewModel.searchAuthors("", selectedStrings)
+                else
+                    searchScreenViewModel.searchRepositories("", selectedStrings)
+            }
+        }, 400)
         return true
     }
 
@@ -159,7 +164,7 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.filter -> {
                 builder.show()
             }
