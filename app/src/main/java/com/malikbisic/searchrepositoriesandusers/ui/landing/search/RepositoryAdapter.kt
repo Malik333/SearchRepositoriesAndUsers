@@ -44,6 +44,13 @@ class RepositoryAdapter: RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHo
             }
 
             itemView.apply {
+
+             user_avatar.setOnClickListener {
+                 val directionsToUserScreen =
+                     SearchScreenFragmentDirections.actionSearchFragmentToUserScreenFragment(item.author?.authorName!!)
+                 it.findNavController().navigate(directionsToUserScreen)
+             }
+
                 GlideApp.with(user_avatar)
                     .load(item.author?.avatarUrl)
                     .into(user_avatar)

@@ -8,4 +8,8 @@ data class Author(
     val authorName: String?,
     @Json(name = "avatar_url")
     val avatarUrl: String?,
+    @Json(name = "public_repos")
+    val reposCount: Int?,
+    @Json(name = "html_url")
+    val userUrl: String?
 )

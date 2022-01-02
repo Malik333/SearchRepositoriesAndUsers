@@ -3,6 +3,7 @@ package com.malikbisic.searchrepositoriesandusers.ui.landing.search
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.malikbisic.searchrepositoriesandusers.R
 import com.malikbisic.searchrepositoriesandusers.glide.GlideApp
@@ -34,6 +35,13 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Author) {
+
+            itemView.setOnClickListener {
+                val directionsToUserScreen =
+                    SearchScreenFragmentDirections.actionSearchFragmentToUserScreenFragment(item.authorName!!)
+                it.findNavController().navigate(directionsToUserScreen)
+            }
+
             itemView.apply {
                 GlideApp.with(userAvatar)
                     .load(item.avatarUrl)

@@ -28,4 +28,9 @@ class RepositoryRepo @Inject constructor(
         return gitHubService.getRepository(owner, repoName)
             .subscribeOn(Schedulers.io())
     }
+
+    fun getGitHubAuthor(owner: String): Single<Author> {
+        return gitHubService.getUser(owner)
+            .subscribeOn(Schedulers.io())
+    }
 }

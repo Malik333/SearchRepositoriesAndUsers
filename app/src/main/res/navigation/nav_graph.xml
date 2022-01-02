@@ -14,6 +14,9 @@
             android:id="@+id/action_searchFragment_to_repositoryDetailsFragment"
             app:destination="@id/repositoryDetailsFragment"
             app:popUpTo="@id/searchFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_userScreenFragment"
+            app:destination="@id/userScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/repositoryDetailsFragment"
@@ -25,6 +28,15 @@
             app:argType="string" />
         <argument
             android:name="repoName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/userScreenFragment"
+        android:name="com.malikbisic.searchrepositoriesandusers.ui.landing.user.UserScreenFragment"
+        android:label="User Details"
+        tools:layout="@layout/user_screen_fragment" >
+        <argument
+            android:name="username"
             app:argType="string" />
     </fragment>
 

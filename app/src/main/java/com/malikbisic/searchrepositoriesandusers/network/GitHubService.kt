@@ -1,5 +1,6 @@
 package com.malikbisic.searchrepositoriesandusers.network
 
+import com.malikbisic.searchrepositoriesandusers.model.Author
 import com.malikbisic.searchrepositoriesandusers.model.Repositories
 import com.malikbisic.searchrepositoriesandusers.model.Repository
 import com.malikbisic.searchrepositoriesandusers.model.Users
@@ -18,4 +19,7 @@ interface GitHubService {
 
     @GET(value = "repos/{owner}/{repo}")
     fun getRepository(@Path("owner") owner: String, @Path("repo") repoName: String): Single<Repository>
+
+    @GET(value = "users/{username}")
+    fun getUser(@Path("username") owner: String): Single<Author>
 }
