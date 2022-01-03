@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_searchFragment_to_userScreenFragment"
             app:destination="@id/userScreenFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_authenticatedUserFragment"
+            app:destination="@id/authenticatedUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/repositoryDetailsFragment"
@@ -38,6 +41,15 @@
         <argument
             android:name="username"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/authenticatedUserFragment"
+        android:name="com.malikbisic.searchrepositoriesandusers.ui.landing.authentication.AuthenticatedUserFragment"
+        android:label="authenticated_user_fragment"
+        tools:layout="@layout/authenticated_user_fragment">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="searchapp://callback" />
     </fragment>
 
 </navigation>

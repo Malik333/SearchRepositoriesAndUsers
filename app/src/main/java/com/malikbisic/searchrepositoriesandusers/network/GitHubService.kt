@@ -1,13 +1,8 @@
 package com.malikbisic.searchrepositoriesandusers.network
 
-import com.malikbisic.searchrepositoriesandusers.model.Author
-import com.malikbisic.searchrepositoriesandusers.model.Repositories
-import com.malikbisic.searchrepositoriesandusers.model.Repository
-import com.malikbisic.searchrepositoriesandusers.model.Users
+import com.malikbisic.searchrepositoriesandusers.model.*
 import io.reactivex.rxjava3.core.Single
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.QueryMap
+import retrofit2.http.*
 
 interface GitHubService {
 
@@ -22,4 +17,15 @@ interface GitHubService {
 
     @GET(value = "users/{username}")
     fun getUser(@Path("username") owner: String): Single<Author>
+
+    @GET(value = "user")
+    fun getMyProfile(@Header("Authorization") accessToken: String): Single<Author>
+
+    @Headers("Accept: application/json")
+    @POST
+    @FormUrlEncoded
+    fun getAccessToken(@Url url: String,
+                       @Field("client_id") clientId: String,
+                       @Field("client_secret") clientSecret: String,
+                       @Field("code") code: String,): Single<AccessToken>
 }

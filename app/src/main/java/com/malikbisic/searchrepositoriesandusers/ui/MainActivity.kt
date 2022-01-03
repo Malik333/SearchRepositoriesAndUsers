@@ -1,7 +1,9 @@
 package com.malikbisic.searchrepositoriesandusers.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.malikbisic.searchrepositoriesandusers.R
@@ -23,5 +25,12 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.nav_host_fragment)
         return navController.navigateUp()
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.v("MainActivity", "data: " + intent?.data)
+        val navController = this.findNavController(R.id.nav_host_fragment)
+        navController.handleDeepLink(intent)
     }
 }
