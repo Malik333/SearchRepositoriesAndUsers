@@ -108,6 +108,7 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
                 users_btn.setTextColor(Color.BLACK)
 
                 search_view.setQuery("", true)
+                createAlertDialog()
             }
             R.id.users_btn -> {
                 isUserSelected = true
@@ -120,17 +121,18 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
                 users_btn.setTextColor(Color.WHITE)
 
                 search_view.setQuery("", true)
+                createAlertDialog()
             }
         }
     }
 
-    fun createAlertDialog() {
-        val items = arrayOf("Stars", "Forks", "Updated")
+    private fun createAlertDialog() {
+        val items = if (isUserSelected) arrayOf("Followers", "Repositories", "Joined") else arrayOf("Stars", "Forks", "Updated")
         var checkedItems = booleanArrayOf(false, false, false)
         val selectedList = ArrayList<Int>()
         builder = AlertDialog.Builder(requireContext())
 
-        builder.setTitle("This is list choice dialog box")
+        builder.setTitle("Sort")
         builder.setMultiChoiceItems(items, checkedItems) { dialog, which, isChecked ->
             if (isChecked) {
                 selectedList.add(which)

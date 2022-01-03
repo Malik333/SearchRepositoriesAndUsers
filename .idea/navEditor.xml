@@ -13,9 +13,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-5595" />
-                            <option name="y" value="-6449" />
+                            <option name="x" value="-5498" />
+                            <option name="y" value="-6438" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="deepLink">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -28,6 +37,15 @@
                             <option name="x" value="-5613" />
                             <option name="y" value="-7133" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_repositoryDetailsFragment_to_userScreenFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -43,6 +61,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_searchFragment_to_authenticatedUserFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_searchFragment_to_repositoryDetailsFragment">
                               <value>
                                 <LayoutPositions />
@@ -63,8 +86,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-5607" />
-                            <option name="y" value="-6797" />
+                            <option name="x" value="-5502" />
+                            <option name="y" value="-6800" />
                           </Point>
                         </option>
                       </LayoutPositions>

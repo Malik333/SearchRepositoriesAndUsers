@@ -32,6 +32,9 @@
         <argument
             android:name="repoName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_repositoryDetailsFragment_to_userScreenFragment"
+            app:destination="@id/userScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/userScreenFragment"

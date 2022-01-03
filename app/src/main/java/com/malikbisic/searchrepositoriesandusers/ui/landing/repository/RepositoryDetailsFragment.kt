@@ -6,8 +6,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.malikbisic.searchrepositoriesandusers.R
 import com.malikbisic.searchrepositoriesandusers.glide.GlideApp
+import com.malikbisic.searchrepositoriesandusers.ui.landing.search.SearchScreenFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.repository_details_fragment.*
 import java.text.SimpleDateFormat
@@ -29,6 +31,12 @@ class RepositoryDetailsFragment : Fragment(R.layout.repository_details_fragment)
                 GlideApp.with(repoDetailsUserAvatar)
                     .load(it.author?.avatarUrl)
                     .into(repoDetailsUserAvatar)
+
+                repoDetailsUserAvatar.setOnClickListener { view ->
+                    val directionsToUserScreen =
+                        RepositoryDetailsFragmentDirections.actionRepositoryDetailsFragmentToUserScreenFragment(it.author?.authorName!!)
+                    view.findNavController().navigate(directionsToUserScreen)
+                }
 
                 repoDetailsUserName.text = it.author?.authorName
                 repoDetailsRepoName.text = it.repositoryName
