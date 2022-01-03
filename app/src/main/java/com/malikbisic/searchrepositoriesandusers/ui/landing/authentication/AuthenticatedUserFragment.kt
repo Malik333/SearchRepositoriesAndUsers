@@ -1,5 +1,6 @@
 package com.malikbisic.searchrepositoriesandusers.ui.landing.authentication
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +16,7 @@ import com.malikbisic.searchrepositoriesandusers.glide.GlideApp
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.authenticated_user_fragment.*
 import kotlinx.android.synthetic.main.user_screen_fragment.*
+import kotlin.math.log
 
 @AndroidEntryPoint
 class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment) {
@@ -29,6 +31,13 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val loginToken = sharedPref.getString("login_token", "")
+
+        if (!loginToken.isNullOrEmpty()) {
+            authenticatedUserViewModel.getMyProfile(loginToken)
+        }
+
         signinBtn.setOnClickListener {
             val urlLogin = "https://github.com/login/oauth/authorize?client_id=$clientId&redirect_uri=$redirectUrl&scope=repo%20user"
             Log.d("AuthFragment", "url: $urlLogin")
@@ -42,6 +51,12 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
             val accessToken = it.accessToken
             val tokenType = it.accessType
             val token = "$tokenType $accessToken"
+
+            with (sharedPref.edit()) {
+                putString("login_token",token)
+                apply()
+            }
+
             authenticatedUserViewModel.getMyProfile(token)
         })
 
