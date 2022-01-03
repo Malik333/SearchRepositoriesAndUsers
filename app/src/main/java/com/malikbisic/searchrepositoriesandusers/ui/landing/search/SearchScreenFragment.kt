@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.malikbisic.searchrepositoriesandusers.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -167,6 +168,10 @@ class SearchScreenFragment : Fragment(R.layout.search_screen_fragment),
         when (item.itemId) {
             R.id.filter -> {
                 builder.show()
+            }
+            R.id.auth_user -> {
+                val directions = SearchScreenFragmentDirections.actionSearchFragmentToAuthenticatedUserFragment()
+                findNavController().navigate(directions)
             }
         }
 
