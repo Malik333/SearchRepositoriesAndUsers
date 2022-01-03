@@ -6,6 +6,15 @@
     android:orientation="vertical"
     tools:context=".ui.landing.authentication.AuthenticatedUserFragment">
 
+    <ProgressBar
+        android:id="@+id/progress_horizontal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+
     <LinearLayout
         android:id="@+id/userInfoContainer"
         android:layout_width="match_parent"
@@ -14,6 +23,9 @@
         android:padding="10dp"
         android:visibility="gone">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,7 +39,7 @@
 
             <TextView
                 android:id="@+id/userName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
@@ -36,7 +48,20 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:textColor="#FFFFFF"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,25 +102,25 @@
         android:id="@+id/loginContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:padding="10dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
             android:padding="10dp"
-            android:text="You are not a logged. Please log in!"/>
+            android:text="You are not a logged. Please log in!"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/signinBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"/>
+            android:text="Login" />
 
     </LinearLayout>
 

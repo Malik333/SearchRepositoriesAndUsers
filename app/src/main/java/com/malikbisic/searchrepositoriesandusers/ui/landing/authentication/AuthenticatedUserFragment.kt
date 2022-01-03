@@ -3,6 +3,7 @@ package com.malikbisic.searchrepositoriesandusers.ui.landing.authentication
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.opengl.Visibility
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +36,7 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
         val loginToken = sharedPref.getString("login_token", "")
 
         if (!loginToken.isNullOrEmpty()) {
+            progress_horizontal.visibility = View.VISIBLE
             authenticatedUserViewModel.getMyProfile(loginToken)
         }
 
@@ -44,6 +46,16 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlLogin))
                 .addCategory(Intent.CATEGORY_BROWSABLE)
             startActivity(intent)
+        }
+
+        logout.setOnClickListener {
+            with(sharedPref.edit()){
+                remove("login_token")
+                apply()
+            }
+
+            loginContainer.visibility = View.VISIBLE
+            userInfoContainer.visibility = View.GONE
         }
 
         //get access token
@@ -63,6 +75,7 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
         //display user info
         authenticatedUserViewModel.myProfile.observe(viewLifecycleOwner, {
             if (it != null) {
+                progress_horizontal.visibility = View.GONE
                 userInfoContainer.visibility = View.VISIBLE
                 loginContainer.visibility =View.GONE
 
@@ -86,6 +99,7 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
 
         if (data != null) {
             val code = data.getQueryParameter("code").toString()
+            progress_horizontal.visibility = View.VISIBLE
             authenticatedUserViewModel.getAccessToken(baseUrl, clientId, clientSecretId, code)
         }
     }

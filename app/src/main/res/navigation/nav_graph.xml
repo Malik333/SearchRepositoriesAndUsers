@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/authenticatedUserFragment"
         android:name="com.malikbisic.searchrepositoriesandusers.ui.landing.authentication.AuthenticatedUserFragment"
-        android:label="authenticated_user_fragment"
+        android:label="My profile"
         tools:layout="@layout/authenticated_user_fragment">
         <deepLink
             android:id="@+id/deepLink"
