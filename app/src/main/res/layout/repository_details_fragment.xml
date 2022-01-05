@@ -68,7 +68,7 @@
             android:id="@+id/repoDetailsRepoLanguageLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Language:"
+            android:text="Programming Language:"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:src="@drawable/ic_outline_info_24"/>

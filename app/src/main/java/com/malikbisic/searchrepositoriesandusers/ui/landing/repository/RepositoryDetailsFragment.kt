@@ -56,7 +56,7 @@ class RepositoryDetailsFragment : Fragment(R.layout.repository_details_fragment)
 
     }
 
-    fun formatDate(date: String): String {
+    private fun formatDate(date: String): String {
         val parser =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
         val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
         return formatter.format(parser.parse(date))

@@ -36,7 +36,7 @@ class SearchScreenViewModel @Inject constructor(
         params["q"] = text
 
         if (!filters.isNullOrEmpty()) {
-            val sortItems = filters.joinToString(".")
+            val sortItems = filters.joinToString(",")
             params["sort"] = sortItems
         }
 

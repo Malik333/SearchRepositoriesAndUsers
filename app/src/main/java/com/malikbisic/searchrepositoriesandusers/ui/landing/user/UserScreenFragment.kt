@@ -11,6 +11,8 @@ import com.malikbisic.searchrepositoriesandusers.glide.GlideApp
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.repository_details_fragment.*
 import kotlinx.android.synthetic.main.user_screen_fragment.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class UserScreenFragment : Fragment(R.layout.user_screen_fragment) {
@@ -29,6 +31,9 @@ class UserScreenFragment : Fragment(R.layout.user_screen_fragment) {
 
                 authorDetailsUserName.text = it.authorName
                 authorDetailsRepoCount.text = it.reposCount.toString()
+                authorDetailsFollowers.text = it.followersCount.toString()
+                authorDetailsJoined.text = formatDate(it.joinedDate!!)
+                authorDetailsUpdated.text = formatDate(it.updatedDate!!)
 
                 val url = it.userUrl
                 seeMoreUserTv.setOnClickListener {
@@ -38,6 +43,12 @@ class UserScreenFragment : Fragment(R.layout.user_screen_fragment) {
                 }
             }
         })
+    }
+
+    private fun formatDate(date: String): String {
+        val parser =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
+        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        return formatter.format(parser.parse(date))
     }
 
 }

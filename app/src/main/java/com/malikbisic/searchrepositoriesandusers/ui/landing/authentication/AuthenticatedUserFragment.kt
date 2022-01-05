@@ -17,6 +17,8 @@ import com.malikbisic.searchrepositoriesandusers.glide.GlideApp
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.authenticated_user_fragment.*
 import kotlinx.android.synthetic.main.user_screen_fragment.*
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.log
 
 @AndroidEntryPoint
@@ -38,6 +40,8 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
         if (!loginToken.isNullOrEmpty()) {
             progress_horizontal.visibility = View.VISIBLE
             authenticatedUserViewModel.getMyProfile(loginToken)
+        } else {
+            loginContainer.visibility = View.VISIBLE
         }
 
         signinBtn.setOnClickListener {
@@ -85,6 +89,9 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
 
                 userName.text = it.authorName
                 userRepoCount.text = it.reposCount.toString()
+                userFollowers.text = it.followersCount.toString()
+                userJoined.text = formatDate(it.joinedDate!!)
+                userUpdated.text = formatDate(it.updatedDate!!)
 
                 val url = it.userUrl
                 seeMoreAuthUserTv.setOnClickListener {
@@ -102,6 +109,12 @@ class AuthenticatedUserFragment : Fragment(R.layout.authenticated_user_fragment)
             progress_horizontal.visibility = View.VISIBLE
             authenticatedUserViewModel.getAccessToken(baseUrl, clientId, clientSecretId, code)
         }
+    }
+
+    private fun formatDate(date: String): String {
+        val parser =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
+        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        return formatter.format(parser.parse(date))
     }
 
 }

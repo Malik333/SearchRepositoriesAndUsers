@@ -51,15 +51,6 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:textColor="#FFFFFF"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
-
         </RelativeLayout>
 
 
@@ -88,6 +79,81 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/userFollowersLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Followers:"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/userFollowers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/userRepoJoinedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joined:"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/userJoined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/userUpdatedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Updated:"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/userUpdated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/seeMoreAuthUserTv"
             android:layout_width="match_parent"
@@ -96,6 +162,15 @@
             android:text="See more"
             android:textColor="#05c5cf"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
     <LinearLayout
@@ -105,6 +180,7 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical"
+        android:visibility="gone"
         android:padding="10dp">
 
         <TextView

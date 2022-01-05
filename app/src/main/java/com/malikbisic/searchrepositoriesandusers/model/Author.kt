@@ -11,5 +11,11 @@ data class Author(
     @Json(name = "public_repos")
     val reposCount: Int?,
     @Json(name = "html_url")
-    val userUrl: String?
+    val userUrl: String?,
+    @Json(name = "followers")
+    val followersCount: Int?,
+    @Json(name = "created_at")
+    val joinedDate: String?,
+    @Json(name = "updated_at")
+    val updatedDate: String?
 )
