@@ -3,135 +3,149 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/user_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_outline_info_24"/>
-
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="User name"/>
-
-        </LinearLayout>
-
-        <LinearLayout
+            android:id="@+id/lin_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/repo_name"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="repo name"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/user_avatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_outline_info_24" />
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User name"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:divider="@color/black"
-                android:orientation="horizontal"
-                >
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:id="@+id/repo_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="repo name"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:divider="@color/black"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/watchers_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_baseline_visibility_24"/>
-
-                    <TextView
-                        android:id="@+id/watchers_count"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:layout_gravity="center_vertical"
-                        android:text="24" />
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/watchers_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_baseline_visibility_24" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                        <TextView
+                            android:id="@+id/watchers_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:text="24"
+                            android:textColor="@color/black" />
 
-                    <ImageView
-                        android:id="@+id/forks_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_git_fork_icon"/>
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/forks_count"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:layout_gravity="center_vertical"
-                        android:text="24" />
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/forks_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_git_fork_icon" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                        <TextView
+                            android:id="@+id/forks_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:text="24"
+                            android:textColor="@color/black" />
 
-                    <ImageView
-                        android:id="@+id/issue_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_outline_info_24"/>
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/issues_count"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:layout_gravity="center_vertical"
-                        android:text="24" />
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/issue_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_outline_info_24" />
+
+                        <TextView
+                            android:id="@+id/issues_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:text="24"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
+
         </LinearLayout>
-
-    </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_below="@+id/lin_layout"/>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
